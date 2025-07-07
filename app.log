@@ -1,0 +1,54 @@
+2025-07-07 17:52:19,254 INFO: 🚀 Starting Ultimate Crypto Article AI Agent...
+2025-07-07 17:52:19,255 INFO: 📰 Fetching articles from multiple sources...
+2025-07-07 17:52:19,378 INFO: 📰 Retrieved 3 articles from Cointelegraph
+2025-07-07 17:52:19,515 INFO: 📰 Retrieved 0 articles from CoinDesk
+2025-07-07 17:52:20,210 INFO: 📰 Retrieved 3 articles from Decrypt
+2025-07-07 17:52:20,210 INFO: 📄 Selected article: How to use Grok for real-time crypto trading signals from Cointelegraph
+2025-07-07 17:52:22,431 INFO: 🔍 Researching advanced keywords...
+2025-07-07 17:52:24,560 WARNING: Google Trends failed: list index out of range
+2025-07-07 17:52:24,597 INFO: 📊 Found 10 primary keywords
+2025-07-07 17:52:24,597 INFO: 🔍 Analyzing competitor content...
+2025-07-07 17:52:33,403 INFO: 🔍 Analyzed 5 competitor sites
+2025-07-07 17:52:33,403 INFO: ✍️ Generating human-like content...
+2025-07-07 17:52:36,200 INFO: HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-07 17:52:52,781 INFO: HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-07 17:53:00,874 INFO: ✅ Ultimate article exported: exports/advanced_article_20250707T175300.html
+2025-07-07 17:53:00,875 INFO: 📈 Target keywords: Institutional crypto adoption, Crypto regulation impact analysis, DeFi yield farming strategies, Crypto mining profitability trends, Smart contract security audit
+2025-07-07 17:53:00,875 INFO: 📊 Word count: 626
+2025-07-07 17:53:00,875 INFO: 🔍 Competitor analysis completed
+2025-07-07 20:39:35,232 INFO: 🚀 Starting Ultimate Crypto Article AI Agent...
+2025-07-07 20:39:35,233 INFO: 📰 Fetching articles from multiple sources...
+2025-07-07 20:39:35,328 INFO: 📰 Retrieved 3 articles from Cointelegraph
+2025-07-07 20:39:35,476 INFO: 📰 Retrieved 0 articles from CoinDesk
+2025-07-07 20:39:36,153 INFO: 📰 Retrieved 3 articles from Decrypt
+2025-07-07 20:39:36,153 INFO: 📄 Selected article: Burn the tokens, keep the loot: Play-to-own games come next from Cointelegraph
+2025-07-07 20:39:37,922 INFO: 🔍 Researching advanced keywords...
+2025-07-07 20:39:39,572 WARNING: Google Trends failed: list index out of range
+2025-07-07 20:39:39,591 INFO: 📊 Found 10 primary keywords
+2025-07-07 20:39:39,591 INFO: 🔍 Analyzing competitor content...
+2025-07-07 20:39:44,115 INFO: 🔍 Analyzed 5 competitor sites
+2025-07-07 20:39:44,115 INFO: ✍️ Generating human-like content...
+2025-07-07 20:39:47,389 INFO: HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-07 20:39:57,296 INFO: HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-07 20:40:01,662 INFO: ✅ Ultimate article exported: exports/advanced_article_20250707T204001.html
+2025-07-07 20:40:01,662 INFO: 📈 Target keywords: NFT marketplace trends 2024, Crypto mining profitability trends, Metaverse crypto investment opportunities, Ethereum staking rewards analysis, Crypto tax implications
+2025-07-07 20:40:01,662 INFO: 📊 Word count: 333
+2025-07-07 20:40:01,662 INFO: 🔍 Competitor analysis completed
+2025-07-07 20:54:42,768 INFO: 🚀 Starting Ultimate Crypto Article AI Agent...
+2025-07-07 20:54:42,769 INFO: 📰 Fetching articles from multiple sources...
+2025-07-07 20:54:44,056 INFO: 📰 Retrieved 3 articles from Cointelegraph
+2025-07-07 20:54:44,202 INFO: 📰 Retrieved 0 articles from CoinDesk
+2025-07-07 20:54:45,025 INFO: 📰 Retrieved 3 articles from Decrypt
+2025-07-07 20:54:45,026 INFO: 📄 Selected article: Burn the tokens, keep the loot: Play-to-own games come next from Cointelegraph
+2025-07-07 20:54:46,760 INFO: 🔍 Researching advanced keywords...
+2025-07-07 20:54:48,271 WARNING: Google Trends failed: list index out of range
+2025-07-07 20:54:48,303 INFO: 📊 Found 10 primary keywords
+2025-07-07 20:54:48,303 INFO: 🔍 Analyzing competitor content...
+2025-07-07 20:54:53,413 INFO: 🔍 Analyzed 5 competitor sites
+2025-07-07 20:54:53,413 INFO: ✍️ Generating human-like content...
+2025-07-07 20:54:56,328 INFO: HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-07 20:55:08,530 INFO: HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-07 20:55:17,866 INFO: ✅ Ultimate article exported: exports/advanced_article_20250707T205517.html
+2025-07-07 20:55:17,866 INFO: 📈 Target keywords: Cross-chain bridge technology, Stablecoin market dynamics, Layer 2 scaling solutions comparison, Crypto tax implications, Central bank digital currency
+2025-07-07 20:55:17,866 INFO: 📊 Word count: 524
+2025-07-07 20:55:17,866 INFO: 🔍 Competitor analysis completed

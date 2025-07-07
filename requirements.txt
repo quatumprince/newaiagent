@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+pydantic
+requests
+feedparser
+beautifulsoup4
+pytrends
+openai
+textstat
+textblob
+nltk
+yfinance
+pandas
+python-dotenv 
