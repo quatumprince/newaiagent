@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "datetime": "^0.0.3",
+    "feedparser": "^2.2.10",
+    "logging": "^4.2.0",
+    "os": "^0.1.2"
+  }
+}

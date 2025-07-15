@@ -27,7 +27,7 @@ app = FastAPI()
 # Allow CORS for frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # For development, allow all. For production, use your frontend URL.
+    allow_origins=["https://newaiagent.onrender.com"],  # For development, allow all. For production, use your frontend URL.
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

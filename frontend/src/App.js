@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./App.css";
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:10000";
@@ -9,12 +9,37 @@ function App() {
   const [error, setError] = useState("");
   const [logs, setLogs] = useState("");
   const [showLogs, setShowLogs] = useState(false);
+  const logInterval = useRef(null);
+
+  // Poll logs every 2 seconds while loading
+  const startLogPolling = () => {
+    setShowLogs(true);
+    logInterval.current = setInterval(async () => {
+      try {
+        const res = await fetch(`${API_URL}/logs`);
+        const text = await res.text();
+        setLogs(text);
+      } catch (err) {
+        setLogs("Failed to fetch logs.");
+      }
+    }, 2000);
+  };
+
+  const stopLogPolling = () => {
+    if (logInterval.current) {
+      clearInterval(logInterval.current);
+      logInterval.current = null;
+    }
+  };
 
   const handleGenerate = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
     setArticleHtml("");
+    setLogs("");
+    setShowLogs(true);
+    startLogPolling();
     try {
       const res = await fetch(`${API_URL}/generate`, {
         method: "POST",
@@ -28,18 +53,7 @@ function App() {
       setError("Error: " + err.message);
     }
     setLoading(false);
-  };
-
-  const fetchLogs = async () => {
-    try {
-      const res = await fetch(`${API_URL}/logs`);
-      const text = await res.text();
-      setLogs(text);
-      setShowLogs(true);
-    } catch (err) {
-      setLogs("Failed to fetch logs.");
-      setShowLogs(true);
-    }
+    stopLogPolling();
   };
 
   return (
@@ -50,7 +64,6 @@ function App() {
           {loading ? "Generating..." : "Generate Article"}
         </button>
       </form>
-      <button onClick={fetchLogs} style={{marginTop: 20}}>Show Backend Logs</button>
       {showLogs && (
         <pre className="logs">
           {logs}

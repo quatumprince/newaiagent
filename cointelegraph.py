@@ -555,7 +555,7 @@ Return the full paraphrased article.
 # ADVANCED HTML EXPORT
 # ─────────────────────────────────────────────────────────────────────────────
 def export_advanced_html(title, content, keywords, meta_description, market_data=None, quality_metrics=None):
-    """Export article with advanced SEO and analytics"""
+    """Export article with advanced SEO and analytics, with clear title, meta, and excerpt sections"""
     
     ts = datetime.now().strftime("%Y%m%dT%H%M%S")
     fname = os.path.join(OUTPUT_DIR, f"advanced_article_{ts}.html")
@@ -563,14 +563,19 @@ def export_advanced_html(title, content, keywords, meta_description, market_data
     # Clean up title and description
     title = title.strip()
     if len(title) > 60:
-        title = title[:57] + "..."
+        meta_title = title[:57] + "..."
+    else:
+        meta_title = title
     
     meta_description = meta_description.strip()
     if len(meta_description) > 160:
         meta_description = meta_description[:157] + "..."
     
+    # Excerpt/summary: first 30 words of content
+    excerpt = " ".join(content.split()[:30]) + ("..." if len(content.split()) > 30 else "")
+    
     # Generate meta tags
-    meta_tags = generate_seo_meta_tags(title, meta_description, keywords)
+    meta_tags = generate_seo_meta_tags(meta_title, meta_description, keywords)
     
     # Calculate reading time
     word_count = len(content.split())
@@ -580,7 +585,7 @@ def export_advanced_html(title, content, keywords, meta_description, market_data
     structured_data = {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": title,
+        "headline": meta_title,
         "description": meta_description,
         "author": {
             "@type": "Person",
@@ -616,31 +621,31 @@ def export_advanced_html(title, content, keywords, meta_description, market_data
         }
     
     html_content = f"""<!DOCTYPE html>
-<html lang="en">
+<html lang=\"en\">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
     <title>{meta_tags['title']}</title>
-    <meta name="description" content="{meta_tags['description']}">
-    <meta name="keywords" content="{meta_tags['keywords']}">
-    <meta name="robots" content="{meta_tags['robots']}">
-    <meta name="author" content="Crypto Expert">
-    <meta name="article:published_time" content="{datetime.now().isoformat()}">
-    <meta name="article:modified_time" content="{datetime.now().isoformat()}">
+    <meta name=\"description\" content=\"{meta_tags['description']}\">
+    <meta name=\"keywords\" content=\"{meta_tags['keywords']}\">
+    <meta name=\"robots\" content=\"{meta_tags['robots']}\">
+    <meta name=\"author\" content=\"Crypto Expert\">
+    <meta name=\"article:published_time\" content=\"{datetime.now().isoformat()}\">
+    <meta name=\"article:modified_time\" content=\"{datetime.now().isoformat()}\">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="{meta_tags['og:title']}">
-    <meta property="og:description" content="{meta_tags['og:description']}">
-    <meta property="og:type" content="{meta_tags['og:type']}">
-    <meta property="og:site_name" content="Crypto Insights Pro">
+    <meta property=\"og:title\" content=\"{meta_tags['og:title']}\">
+    <meta property=\"og:description\" content=\"{meta_tags['og:description']}\">
+    <meta property=\"og:type\" content=\"{meta_tags['og:type']}\">
+    <meta property=\"og:site_name\" content=\"Crypto Insights Pro\">
     
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="{meta_tags['twitter:card']}">
-    <meta name="twitter:title" content="{meta_tags['twitter:title']}">
-    <meta name="twitter:description" content="{meta_tags['twitter:description']}">
+    <meta name=\"twitter:card\" content=\"{meta_tags['twitter:card']}\">
+    <meta name=\"twitter:title\" content=\"{meta_tags['twitter:title']}\">
+    <meta name=\"twitter:description\" content=\"{meta_tags['twitter:description']}\">
     
     <!-- Structured Data -->
-    <script type="application/ld+json">
+    <script type=\"application/ld+json\">
     {json.dumps(structured_data, indent=2)}
     </script>
     
@@ -658,39 +663,37 @@ def export_advanced_html(title, content, keywords, meta_description, market_data
         a {{ color: #3498db; text-decoration: none; }}
         a:hover {{ text-decoration: underline; }}
         .highlight {{ background: #fff3cd; padding: 2px 4px; border-radius: 3px; }}
+        .meta-section {{ background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; margin-bottom: 30px; }}
+        .excerpt-section {{ background: #eaf6ff; border-left: 4px solid #3498db; padding: 12px 18px; margin-bottom: 24px; font-style: italic; color: #2c3e50; }}
     </style>
 </head>
 <body>
     <article>
+        <div class="meta-section">
+            <div><strong>Meta Title:</strong> {meta_title}</div>
+            <div><strong>Meta Description:</strong> {meta_description}</div>
+            <div><strong>Keywords:</strong> {', '.join(keywords[:5])}</div>
+        </div>
         <h1>{title}</h1>
-        
+        <div class="excerpt-section"><strong>Excerpt:</strong> {excerpt}</div>
         <div class="meta">
             <div class="reading-time">📖 Reading time: {reading_time} minutes</div>
             <div>📅 Published: {datetime.now().strftime('%B %d, %Y')}</div>
-            <div class="keywords">🏷️ Keywords: {', '.join(keywords[:5])}</div>
         </div>
-        
         {f'<div class="market-data"><h3>📊 Market Update</h3><p>Bitcoin: ${market_data.get("bitcoin", {}).get("price", 0):,.2f} ({market_data.get("bitcoin", {}).get("change_24h", 0):+.2f}%) | Ethereum: ${market_data.get("ethereum", {}).get("price", 0):,.2f} ({market_data.get("ethereum", {}).get("change_24h", 0):+.2f}%)</p></div>' if market_data else ''}
-        
         {f'<div class="quality-metrics"><h3>📈 Content Quality</h3><p>Quality Score: {quality_metrics.get("quality_score", 0)}/100 | Readability: {quality_metrics.get("flesch_score", 0)} | Word Count: {quality_metrics.get("word_count", 0):,}</p></div>' if quality_metrics else ''}
-        
         <div class="content">
 """
-    
     # Process content and add proper HTML structure
     paragraphs = content.split('\n\n')
-    
     for paragraph in paragraphs:
         paragraph = paragraph.strip()
         if paragraph:
             if paragraph.startswith('##'):
-                # This is a subheading
                 heading_text = paragraph[3:].strip()
                 html_content += f'            <h2>{heading_text}</h2>\n'
             else:
-                # This is a paragraph
                 html_content += f'            <p>{paragraph}</p>\n'
-    
     # Add disclaimer
     html_content += """
         <div class="disclaimer">
@@ -700,10 +703,8 @@ def export_advanced_html(title, content, keywords, meta_description, market_data
     </article>
 </body>
 </html>"""
-    
     with open(fname, 'w', encoding='utf-8') as f:
         f.write(html_content)
-    
     return fname
 
 def generate_seo_meta_tags(title, description, keywords):
