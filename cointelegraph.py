@@ -526,10 +526,11 @@ def generate_advanced_content(prompt):
     # --- Enhanced post-processing paraphrasing step for anti-AI-detection ---
     paraphrase_prompt = f"""
 Paraphrase the following news article to further reduce AI-detectable patterns:
-- Increase sentence variety, occasionally use passive voice, and introduce minor, natural imperfections (such as slightly awkward phrasing, subtle inconsistencies, or minor redundancies).
-- Add occasional sentence fragments and vary paragraph length (mix short and long paragraphs).
+- Increase sentence and paragraph variety, occasionally use passive voice, and introduce minor, natural imperfections (such as slightly awkward phrasing, subtle inconsistencies, or minor redundancies).
+- Add occasional sentence fragments and vary paragraph length (mix short and long paragraphs, including some single-sentence paragraphs).
 - Break up formulaic transitions and avoid repetitive section structures.
 - Reference real-world events, dates, or sources where possible (e.g., cite recent news, organizations, or expert quotes, even if paraphrased).
+- Add at least one direct or paraphrased quote from a real or plausible expert or organization.
 - Keep the tone professional, objective, and news-like. Do not add casual language or personal opinions.
 
 Article:
